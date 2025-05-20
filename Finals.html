@@ -5,82 +5,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f2f2f0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
         }
 
-        .nav {
-            background-color: white;
-            width: 200px;
-            height: 1000px;
+        .sidebar {
+            width: 70px;
+            height: 100vh;
+            background-color: #000;
+            position: fixed;
+            top: 0;
+            left: 0;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 1rem;
         }
 
-        .nav ul {
-            list-style-type: none;
-            margin-top: 100px;
-            padding: 0;
-            width: 200px;
+        .sidebar i {
+            color: white;
+            margin: 1.5rem 0;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .sidebar i:hover {
+            transform: scale(1.2);
+            color: #f4511e;
+        }
+
+        .main {
+            margin-left: 70px;
+            padding: 2rem;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 1px solid #ddd;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .profile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logout-btn {
+            background-color: #f4511e;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .stats-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
             text-align: center;
-            background-color: white;
         }
 
-        .nav li a {
-            display: block;
-            color: #000;
-            margin-top: 10px;
-            padding: 8px 16px;
-            font-weight: bold;
-            text-decoration: none;
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 100%;
         }
 
-        .nav li a:hover {
-            display: flex;
-            padding: 0.875em 2em;
-            background: linear-gradient(90deg, #cccccc, transparent) #8f979e;
-            font-family: inherit;
-            color: #fff;
-            text-decoration: none;
-            transition: background-color 1s;
-            place-content: center;
-            font-size: large;
+        .highlight {
+            background-color: #f4511e;
+            color: white;
+            height: 100%;
+            border-radius: 8px;
+            padding: 1.5rem;
         }
 
-        .nav li a:focus {
-            background-color: #4e4a4b;
-            color: #fff;
+        .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+        }
+
+        .badge {
+            background-color: #f4511e;
+            color: white;
+            font-size: 0.75rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="nav">
-        <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Clients</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Calendar</a></li>
-            <li><a href="#">Message</a></li>
-            <li><a href="#">Report</a></li>
-            <li><a href="#">Settings</a></li>
-        </ul>
+    <div class="sidebar">
+        <i class="fas fa-home"></i>
+        <i class="fas fa-user"></i>
+        <i class="fas fa-calendar-alt"></i>
+        <i class="fas fa-chart-pie"></i>
+        <i class="fas fa-cogs"></i>
     </div>
 
+    <div class="main">
+        <div class="topbar">
+            <div class="profile-icon">
+                <img src="" alt="">
+            </div>
+            <button class="logout-btn">Log Out</button>
+        </div>
 
+        <h3 class="mt-4">Admin Dashboard</h3>
 
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="stats-card">
+                    <h2>1,783</h2>
+                    <p>Total Cases <span class="text-warning">15% Pending</span></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="stats-card bg-dark text-white">
+                    <h2>1,098</h2>
+                    <p>Total Team Members<span class="text-success">22% Active</span></p>
+                </div>
+            </div>
+        </div>
 
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="section">
+                    <p><strong>Next Meeting</strong><br>Thursday 10:30</p>
+                    <h4>14:00 - Client Presentation</h4>
+                    <p>Attendance:</p>
+                </div>
+                <span class="circle">X</span><span class="circle">Y</span><span class="circle">Z</span>
+            </div>
+            <p class="mt-3">Platforms</p>
+            <i class="fab fa-slack"></i> <i class="fab fa-trello"></i> <i class="fab fa-zoom"></i>
+            <ul class="mt-2">
+                <li>Client Insight</li>
+                <li>Strategy Meeting</li>
+                <li>Progress Reports</li>
+            </ul>
+        </div>
+    <div>
 
+        <div class="col-md-4">
+            <div class="section">
+                <p><strong>Project Summary</strong><br>Thursday 10:30</p>
+                <h4>36/50</h4>
+                <p>72% Tasks Completed</p>
+                <div class="progress">
+                </div class="progress-bar bg-success" style="width: 72%"></div>
+        </div>
 
+        <div class="col-md-4">
+            <div class="section">
+                <p><strong>Time Usage</strong><br>Thursday 10:30</p>
+                <h4>42/50</h4>
+                <p>84% Time Allocated</p>
+                <div class="progress">
+                    <div class="progress-bar bg-info" style="width: 84%"></div>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-md-6">
+            <div class="section">
+                <p><strong>Growth Performance</strong></p>
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
 
+        <div class="col-md-6">
+            <div class="section bg-primary text-white rounded-3 shadow-lg p-4 d-flex align-items-center justify-content-between">
+            </div>
+            <h5 class="fw-bold">Level Up Your Project Management</h5>
+            <p class="mb-0">Bida ang saya.</p>
+            <a href="#" class="text-white mt-3 d-inline-block">
+                <button class="btn btn-outline-light rounded-0">Explore Now<i class="fas fa-arrow-right"></i>
+                </button>
+            </a>
+        </div>
+        <div>
+            <img src="" alt="" class="img-fluid rounded-circle">
+        </div>
+    </div>
 
+    <div class="col-md-6">
+        <div class="section">
+            <p><strong>Feedback Section</strong></p>
+            <textarea name="form-control" rows="4" placeholder="Leave your comment or suggestion here..."></textarea>
+        </div>
+    </div>
 
+    <div class="col-md-6">
+        <div class="section">
+            <p><strong>Team Overview</strong></p>
+            <ul class="list-unstyled">
+                <li>Design Team<span class="text-success">(active) 90%</span></li>
+                <li>Design Team<span class="text-warning">(active) 75%</span></li>
+                <li>Design Team<span class="text-danger">(inactive) 25%</span></li>
+                <li>Design Team<span class="text-muted">(inactive) 10%</span></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+
+    </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
